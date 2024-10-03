@@ -1,0 +1,22 @@
+{
+  "name": "todo_express",
+  "version": "1.0.0",
+  "description": "Todo list app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "web programming",
+    "dynamic app"
+  ],
+  "author": "Kaisa Ets",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
