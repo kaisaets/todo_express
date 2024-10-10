@@ -1,3 +1,48 @@
-<b>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Todo list</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6">
+              <div class="card">
+                <div class="card-content">
+                  <span class="card-title">Card Title</span>
+                  <div class="row">
+                    <form class="col s12">
+                      <div class="row">
+                        <div class="input-field col s6">
+                          <input placeholder="Task" id="Task" type="text" class="validate">
+                          <label for="task">Insert task</label>
+                        </div>
+                        </div>
+                        <input type="submit" value="Add task" class="btn">
+                    </form>
+                    <ul class="collection">
+                      <% tasks.forEach(task => { %>
+                        <li class="collection-item"><%= task %></li>
+                        <% }) %> 
+                      </ul>
+                  </div>
+                </div>
+                <div class="card-action">
+                  <a href="#">This is a link</a>
+                  <a href="#">This is a link</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+    </div>
+       <!-- Compiled and minified JavaScript -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
     
-</b>
+</body>
+</html>
