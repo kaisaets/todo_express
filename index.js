@@ -22,6 +22,18 @@ const readFile = (filename) => {
     })
 }  
 
+const writeFile = (filename, data) => {
+    return new Promise((resolve, reject)  => {
+        fs.writeFile(filename, data, 'utf8', err => {
+            if (err){
+                console.error(err)
+                return
+            } 
+            resolve(true)
+        })
+    })
+}  
+
 app.get('/', (req, res)=>{
     readFile('./tasks.json')
     .then((tasks) => {
@@ -48,16 +60,25 @@ app.post('/', (req, res) => {
         tasks.push(newTask)
         console.log(tasks)
         const data = JSON.stringify(tasks, null, 2)
-        fs.writeFile('./tasks.json', data, err =>{
-            if (err) {
-                console.log(err);
-            } else{
-                res.redirect('/')
+        writeFile('./tasks.json', data)
+        res.redirect('/')
+    })
+})
+app.get('/delete-task/:taskId', (req, res) => {
+    let deletedTaskId = parseInt(req.params.taskId)
+    readFile('./tasks.json')
+    .then(tasks => {
+        tasks.forEach((task, index) => {
+            if(task.id === deletedTaskId){
+                tasks.splice(index, 1)
             } 
-        } )
-    } )
-    
-} )
+        })
+        const data = JSON.stringify(tasks, null, 2)
+        writeFile('./tasks.json', data)
+        
+        res.redirect('/')
+    })
+})
 
 app.listen(3001, () => {
     console.log('Server is started http://localhost:3001')
