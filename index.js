@@ -38,13 +38,27 @@ app.get('/', (req, res)=>{
     readFile('./tasks.json')
     .then((tasks) => {
         console.log(tasks) 
-        res.render('index', {tasks: tasks})
+        res.render('index', {
+            tasks: tasks,
+            error: null
+        })
     })    
 })
 
 app.post('/', (req, res) => {
     console.log('form sent data')
     let task = req.body.task
+    let error = null
+    if (req.body.task.trim().length === 0){
+        error = 'Please insert correct task data'
+        readFile('./tasks.json')
+        .then(tasks =>{
+            res.render('index', {
+                tasks: tasks,
+                error: error
+            } )
+        } )
+    } else {
     readFile('./tasks.json')
     .then((tasks) => {
         let index
@@ -63,7 +77,9 @@ app.post('/', (req, res) => {
         writeFile('./tasks.json', data)
         res.redirect('/')
     })
+}
 })
+
 app.get('/delete-task/:taskId', (req, res) => {
     let deletedTaskId = parseInt(req.params.taskId)
     readFile('./tasks.json')
@@ -79,6 +95,15 @@ app.get('/delete-task/:taskId', (req, res) => {
         res.redirect('/')
     })
 })
+app.get('/delete-tasks', (req, res)=>{
+    readFile('./tasks.json')
+    .then(tasks =>{
+        tasks =[] 
+        const data = JSON.stringify(tasks, null, 2)
+        writeFile('./tasks.json', data)
+        res.redirect('/')
+    } )
+} )
 
 app.listen(3001, () => {
     console.log('Server is started http://localhost:3001')

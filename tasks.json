@@ -5,18 +5,14 @@
   },
   {
     "id": 2,
-    "task": "Study HTTP"
+    "task": "Study CSS"
   },
   {
     "id": 3,
     "task": "Study JS"
   },
   {
-    "id": 5,
-    "task": "Study JSON"
-  },
-  {
-    "id": 6,
-    "task": "Study  objects"
+    "id": 4,
+    "task": "Test error"
   }
 ]

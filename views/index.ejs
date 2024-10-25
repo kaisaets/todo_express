@@ -15,7 +15,16 @@
             <div class="col s12 m6">
               <div class="card">
                 <div class="card-content">
-                  <span class="card-title">Card Title</span>
+                  <% if(error !== null){ %>  
+                  <div class="row teal lighten-4">
+                    <div class="col s12">
+                      <p class="center-align">
+                        <%= error %>
+                      </p>
+                    </div>
+                  </div>
+                  <% }%> 
+                  <span class="card-title">ToDo list</span>
                   <div class="row">
                     <form class="col s12" method="post" action="/">
                       <div class="row">
@@ -27,6 +36,7 @@
                         </div>
                         <input type="submit" value="Add task" class="btn">
                     </form> 
+                    
                   </div>
                 </div>              
                     <div class="card-action">
@@ -42,6 +52,7 @@
                           </li>
                           <% }) %> 
                       </ul>
+                      <a href="delete-tasks" class="btn">Clear all</a>
                   </div>
                 
                 </div>
